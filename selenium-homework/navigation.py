@@ -15,9 +15,11 @@ try:
         driver.execute_script("document.getElementsByTagName('a')[" + str(i) + "].removeAttribute('target');")
         i += 1
         time.sleep(0.2)
-        link.click()
-        time.sleep(0.5)
+        #link.click()
+        driver.get(link.get_attribute("href"))
+        time.sleep(1)
         # A _blank-ot ugyan eltávolítja a hack, de a külsős url navigálással nem tud mit kezdeni, később visszatérek rá.
+        ''' '''
         if driver.current_url == link.get_attribute("href"):
             print("OK")
             print(driver.current_url)
@@ -27,7 +29,7 @@ try:
             break
 
         driver.back()
-except:
-    print("Error!")
+#except:
+#    print("Error!")
 finally:
     driver.close()
